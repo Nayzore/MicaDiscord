@@ -19,6 +19,7 @@
     "url": "https://github.com/GregVido/MicaDiscord.git"
   },
   "devDependencies": {
-    "electron": "^22.3.0"
+    "electron": "^22.3.0",
+    "electron-builder": "^23.6.0"
   }
 }
